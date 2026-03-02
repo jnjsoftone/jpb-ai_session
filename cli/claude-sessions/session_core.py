@@ -1,4 +1,4 @@
-"""
+﻿"""
 Claude Code 세션 핵심 비즈니스 로직
 
 session-to-md.py(CLI)와 api.py(FastAPI)가 공유하는 함수 모음.
