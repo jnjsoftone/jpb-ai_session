@@ -8,3 +8,16 @@ wheels/
 
 # Virtual environments
 .venv
+
+# env
+.env
+.env.*
+!.env.example
+
+# private
+_docs/
+_backups/
+_drafts/
+
+# claude
+.claude
