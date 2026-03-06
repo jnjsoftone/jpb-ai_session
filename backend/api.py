@@ -14,9 +14,9 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 
-load_dotenv(Path(__file__).parent.parent / ".env")
+load_dotenv(find_dotenv(usecwd=True))
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware

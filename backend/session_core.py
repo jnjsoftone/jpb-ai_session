@@ -9,9 +9,9 @@ import os
 from datetime import datetime
 from pathlib import Path
 
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 
-load_dotenv(Path(__file__).parent.parent / ".env")
+load_dotenv(find_dotenv(usecwd=True))
 
 CLAUDE_DIR = Path(os.environ.get("CLAUDE_DIR", Path.home() / ".claude"))
 PROJECTS_DIR = CLAUDE_DIR / "projects"
