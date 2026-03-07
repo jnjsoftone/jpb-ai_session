@@ -42,6 +42,7 @@ def main():
     )
     parser.add_argument("file", nargs="?", help="변환할 .jsonl 파일 경로")
     parser.add_argument("-o", "--output", help="출력 .md 파일 경로")
+    parser.add_argument("-t", "--title", default="", help="세션 제목 (미지정 시 첫 번째 user 메시지에서 자동 생성)")
     parser.add_argument("--project", help="프로젝트 경로 (해당 프로젝트의 모든 세션 변환)")
     parser.add_argument("--all", action="store_true", help="모든 프로젝트의 모든 세션 변환")
     parser.add_argument("--outdir", default="./claude-sessions", help="출력 디렉토리 (기본: ./claude-sessions)")
@@ -73,7 +74,7 @@ def main():
             print(f"오류: 파일을 찾을 수 없습니다: {jsonl_path}")
             sys.exit(1)
 
-        md = session_to_markdown(jsonl_path, include_tools=args.tools)
+        md = session_to_markdown(jsonl_path, include_tools=args.tools, title=args.title)
 
         if args.output:
             outpath = Path(args.output)
@@ -123,6 +124,7 @@ def main():
             proj_outdir = outdir / proj_dir.name
             for s in sessions:
                 convert_session(s, proj_outdir, include_tools=args.tools)
+
         print(f"\n완료. 출력 위치: {outdir.resolve()}")
         return
 
